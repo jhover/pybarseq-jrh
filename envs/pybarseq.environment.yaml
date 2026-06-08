@@ -1,0 +1,29 @@
+name: pybarseq
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - conda-forge::anndata
+  - h5py
+  - imageio
+  - ipython
+  - joblib
+  - jupyter
+  - matplotlib
+  - natsort
+  - networkx
+  - numpy==1.26.4
+  - opencv
+  - pandas
+  - pip
+  - pyarrow
+  - pyimagej
+  - scikit-image
+  - scipy
+  - seaborn
+  - tensorflow
+  - tifffile
+  - pip:
+    - git+https://github.com/jacksonloper/bardensr.git
+
