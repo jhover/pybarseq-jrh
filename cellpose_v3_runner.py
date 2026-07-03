@@ -44,7 +44,7 @@ def main():
         imgs=io.imread(os.path.join(args.pth,'processed',folder,'aligned',in_name))
         masks,flows,styles,diams=model.eval(imgs,diameter=args.diameter,channels=channels)
         io.imsave(os.path.join(args.pth,'processed',folder,'aligned',args.outname),masks)
-    print('Cellpose finished')
+    print('Cellpose finished.')
 
 if __name__=="__main__":
     main()

@@ -22,6 +22,7 @@ def call_n2v(pth,basedir,fname):
 
 
 def run_n2v(pth,fname,model_name0,model_name1,model_name2,model_name3,basedir):
+    print(f'Running n2v models from {basedir}')
     model0=N2V(config=None,name=model_name0,basedir=basedir)
     model1=N2V(config=None,name=model_name1,basedir=basedir)
     model2=N2V(config=None,name=model_name2,basedir=basedir)
@@ -38,7 +39,8 @@ def run_n2v(pth,fname,model_name0,model_name1,model_name2,model_name3,basedir):
             Ipred[1,:,:]=model1.predict(I[1,:,:],axes='YX')
             Ipred[2,:,:]=model2.predict(I[2,:,:],axes='YX')
             Ipred[3,:,:]=model3.predict(I[3,:,:],axes='YX')
-            imwrite(os.path.join(pth,'processed',folder,'n2v'+filename.split('/')[-1]),uint16m(Ipred),photometric='minisblack')
+            #os.makedirs(os.path.join(pth,'processed',folder,'denoised'),exist_ok=True)
+            imwrite(os.path.join(pth,'processed',folder,'n2v'+filename.split('/')[-1]), uint16m(Ipred), photometric='minisblack')
         # I HAVE NOT SUBTRACTED MINIMUM PER CHANNEL FROM EACH CHANNEL BEFORE WRITING
     
         
@@ -48,7 +50,7 @@ def uint16m(x):
     Preprocessing function:
     MATLAB equivalent of uint16-does clipping between data bounds and then converts
     """
-    y=np.uint16(np.clip(np.round(x),0,65535))
+    y=np.uint16(np.clip(np.round(x), 0, 65535))
     return y
 
 def get_folders(pth):
